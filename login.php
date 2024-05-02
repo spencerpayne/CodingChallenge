@@ -1,8 +1,9 @@
 <?php
-$host = "localhost";
-$dbname = "codingchallenge";
-$user = "jpayne";
-$pass = "payne";
+$env = parse_ini_file('.env');
+$host = $env["host"];
+$dbname = $env["dbname"];
+$user = $env["user"];
+$pass = $env["pass"];
 
 $db = pg_connect("host=$host dbname=$dbname user=$user password=$pass");
 if(!$db) {
@@ -26,12 +27,11 @@ if(!$db) {
 
             // Verify the provided password against the hashed password from the database
             if(password_verify($password, $hashed_password_db)) {
-                // Passwords match, login successful
-                // You can set up session variables and redirect to a dashboard or home page
+                // if passwords match, login is successful
                 echo "User login successful\n";
                 echo '<form action="logout.php" method="post">
                   <input type="submit" value="Log Out">
-              </form>';
+                </form>';
             } else {
                 // Passwords don't match, login failed
                 echo "Invalid username or password";
