@@ -6,7 +6,7 @@ Should have the format:\
 host = ""\
 dbname = ""\
 user = ""\
-pass = ""\
+pass = ""
 
 Technology Stack:
 - Database: PostgreSQL
