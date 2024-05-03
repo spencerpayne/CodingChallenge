@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentication App Coding Challenge</title>
+  <link rel="stylesheet" href="styles.css"> <!--css file-->
+  <script src="script.js" defer></script> <!--use javascript file-->
+</head>
+
+<body>
+  <h1>Authentication App</h1>
+  <div class="wrapper"> <!--main box that holds the signup and login-->
+
+    <div id="signup"> <!-- signup div-->
+      <h2>Sign Up</h2>
+      <form id="signupForm" action="signup.php" method="GET" onsubmit="return validate()">
+        <!-- validates the user input as well as uses signup.php -->
+        <input type="text" id="username" name="username" placeholder="Username" required> 
+        <input type="email" id="email" name="email" placeholder="Email" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <button type="submit">Sign Up</button>
+      </form>
+      <p id="signupMessage"></p>
+    </div>
+
+    <div id="login"> <!-- login div-->
+      <h2>Login</h2>
+      <form id="loginForm" action="login.php" method="GET"> <!-- uses login.php and GET to retreive user login-->
+        <input type="text" id="loginUsername" name="username" placeholder="Username" required>
+        <input type="password" id="loginPassword" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p id="loginMessage"></p>
+    </div>
+  
+
+  <!--postman div-->
+  <div class="postman-run-button" data-postman-action="collection/fork" data-postman-visibility="public"
+    data-postman-var-1="34581022-c5d481a9-8f4e-4748-b5a8-8227f13bc55b"
+    data-postman-collection-url="entityId=34581022-c5d481a9-8f4e-4748-b5a8-8227f13bc55b&entityType=collection&workspaceId=47903174-7f0c-4fe1-a969-e6b289fac020">
+  </div>
+  </div>
+  <!-- postman script-->
+  <script type="text/javascript">
+    (function (p, o, s, t, m, a, n) {
+      !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+      !o.getElementById(s + t) && o.getElementsByTagName("head")[0].appendChild((
+        (n = o.createElement("script")),
+        (n.id = s + t), (n.async = 1), (n.src = m), n
+      ));
+    }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+  </script>
+
+</body>
+
+</html>
