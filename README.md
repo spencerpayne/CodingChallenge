@@ -3,7 +3,7 @@ https://suitable-burro-ghastly.ngrok-free.app/CodingChallenge/
 
 Create an .env file in a folder called private.
 Should have the format:
-host = ""\n
+host = ""\
 dbname = ""
 user = ""
 pass = ""
