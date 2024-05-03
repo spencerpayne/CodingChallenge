@@ -1,45 +1,47 @@
 <?php
+// hidden database parameters, gets them from .env file
 $env = parse_ini_file('.env');
 $host = $env["host"];
 $dbname = $env["dbname"];
 $user = $env["user"];
 $pass = $env["pass"];
 
+// connect to database and use db credentials
 $db = pg_connect("host=$host dbname=$dbname user=$user password=$pass");
-if(!$db) {
+if (!$db) {
     echo "Error : Unable to open database\n";
 } else {
-    // Get user input
+    // get user input
     $username = $_GET["username"];
     $password = $_GET["password"];
 
-    // Fetch the hashed password from the database for the provided username
+    // gets hashed password from table and sees if it matches for provided username
     $query = "SELECT password FROM users WHERE username = $1";
     $result = pg_query_params($db, $query, array($username));
 
-    if(!$result) {
+    if (!$result) {
         echo "Error : Unable to fetch user data\n";
     } else {
-        // Check if a row is returned
-        if(pg_num_rows($result) == 1) {
+        // check if table has data and checks 
+        if (pg_num_rows($result) == 1) {
             $row = pg_fetch_assoc($result);
             $hashed_password_db = $row['password'];
 
-            // Verify the provided password against the hashed password from the database
-            if(password_verify($password, $hashed_password_db)) {
-                // if passwords match, login is successful
-                echo "User login successful\n";
-                echo '<form action="logout.php" method="post">
-                  <input type="submit" value="Log Out">
-                </form>';
+            // check if password matches the hashed password
+            if (password_verify($password, $hashed_password_db)) {
+                // if passwords match, login is successful and give user ability to logout
+                echo "<div style='text-align: center;'>";
+                echo "<p>User login successful</p>";
+                echo '<form action="logout.php" method="post" style="margin-top: 20px;">
+                          <input type="submit" value="Log Out">
+                      </form>';
+                echo "</div>";
             } else {
-                // Passwords don't match, login failed
-                echo "Invalid username or password";
+                // if password is incorrect or user is not in table
+                echo "<div style='text-align: center;'>";
+                echo "<p style='color: red;'>Invalid username or password</p>";
+                echo "</div>";
             }
-        } else {
-            // User not found in the database
-            echo "Invalid username or password";
         }
     }
 }
-?>
