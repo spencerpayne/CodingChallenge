@@ -2,11 +2,11 @@ ngrok http --domain=suitable-burro-ghastly.ngrok-free.app 10.0.0.158:80
 https://suitable-burro-ghastly.ngrok-free.app/CodingChallenge/
 
 Create an .env file in a folder called private.
-Should have the format:
+Should have the format:\
 host = ""\
-dbname = ""
-user = ""
-pass = ""
+dbname = ""\
+user = ""\
+pass = ""\
 
 Technology Stack:
 - Database: PostgreSQL
