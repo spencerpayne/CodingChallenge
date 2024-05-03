@@ -29,4 +29,4 @@ Database Details:
   - `email`
   - `password` (hashed for security)
 
-Postman is still a WIP
+
