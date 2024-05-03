@@ -1,8 +1,10 @@
+// funciton that validates user input
 function validate() {
     let password = document.getElementById("password").value;
     let passwordLength = password.length;
     let passwordBox = document.getElementById("password");
 
+    // if statement that checks if password is long enough. looks for 10 characters
     if (passwordLength < 10) {
         alert('Password needs to be at least 10 characters');
         passwordBox.style.border = "red solid 3px";

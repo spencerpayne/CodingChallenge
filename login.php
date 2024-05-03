@@ -30,18 +30,17 @@ if (!$db) {
             // check if password matches the hashed password
             if (password_verify($password, $hashed_password_db)) {
                 // if passwords match, login is successful and give user ability to logout
-                echo "<div style='text-align: center;'>";
-                echo "<p>User login successful</p>";
-                echo '<form action="logout.php" method="post" style="margin-top: 20px;">
-                          <input type="submit" value="Log Out">
-                      </form>';
-                echo "</div>";
+                echo "User login successful\n";
+                echo '<form action="logout.php" method="post">
+                  <input type="submit" value="Log Out">
+                </form>';
             } else {
-                // if password is incorrect or user is not in table
-                echo "<div style='text-align: center;'>";
-                echo "<p style='color: red;'>Invalid username or password</p>";
-                echo "</div>";
+                // if password is incorrect
+                echo "Invalid username or password";
             }
+        } else {
+            // if user is not in table
+            echo "Invalid username or password";
         }
     }
 }

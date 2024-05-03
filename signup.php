@@ -25,18 +25,10 @@ if (!$db) {
     $result = pg_execute($db, "insert_query", array($username, $email, $hashed_password));
 
     if (!$result) {
-        // If there's an error registering the user
-        echo "<div style='text-align: center;'>";
-        echo "<p style='color: red;'>Error registering user</p>";
-        echo "<p style='color: red;'>" . pg_last_error($db) . "</p>";
-        echo "<a href='index.html'>Return to Home</a>";
-        echo "</div>";
+        echo "Error registering user\n";    // error handling
+        echo pg_last_error($db); // Print PostgreSQL error message
     } else {
-        // If the user is registered successfully
-        echo "<div style='text-align: center;'>";
-        echo "<p>User registered successfully</p>";
-        echo "<a href='index.html'>Return to Home</a>";
-        echo "</div>";
-        exit(); // Exit to prevent further execution
+        echo "User registered successfully\n";
+        exit();
     }
 }
